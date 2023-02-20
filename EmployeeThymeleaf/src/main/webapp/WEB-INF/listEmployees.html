@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h3>Employees</h3>
+<p>
+    <a th:href="@{/address/createForm}">
+        Add new address
+    </a>
+</p>
+<p>
+    <a th:href="@{/employees/create}">
+        Add new employee
+    </a>
+</p>
+
+<table id = "employees" border="1">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Salary</th>
+        <th>Address</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <tr th:each="e: ${employees}">
+        <td th:text="${e.getId()}"></td>
+        <td th:text="${e.getName()}"></td>
+        <td th:text="${e.getAge()}"></td>
+        <td th:text="${e.getSalary()}"></td>
+        <td th:text="${e.getAddress().getName()}"></td>
+        <td><a th:href="@{/employees/update/{id}(id=${e.getId()})}">edit</a></td>
+        <td><a th:href="@{/employees/delete/{id}(id=${e.getId()})}">delete</a></td>
+    </tr>
+</table>
+</body>
+</html>
